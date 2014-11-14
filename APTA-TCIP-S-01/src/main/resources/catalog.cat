@@ -1,0 +1,5 @@
+--
+	REWRITE_SYSTEM "http://www.aptatcip.com/APTA-TCIP-S-01%204.0_files/Schema%20Set.zip!/Schema%20Set/" "./"
+--
+REWRITE_SYSTEM "http://www.a.com/" "./"
+

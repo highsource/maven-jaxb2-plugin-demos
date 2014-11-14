@@ -1,0 +1,69 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>APTA-TCIP-S-01</artifactId>
+	<packaging>jar</packaging>
+	<name>APTA-TCIP-S-01</name>
+	<parent>
+		<groupId>org.hisrc.maven.plugins</groupId>
+		<artifactId>maven-jaxb2-plugin-demos</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+	<properties>
+		<generated-resources.directory>${project.build.directory}/generated-resources</generated-resources.directory>
+		<downloaded-schemas.directory>${generated-resources.directory}/downloaded-schemas</downloaded-schemas.directory>
+		<unpacked-schemas.directory>${generated-resources.directory}/unpacked-schemas</unpacked-schemas.directory>
+		<schemas.directory>src/main/resources</schemas.directory>
+		<schemas.src>http://www.aptatcip.com/APTA-TCIP-S-01%204.0_files/Schema%20Set.zip</schemas.src>
+		<schemas.zip>SchemaSet.zip</schemas.zip>
+		<schema-set.directory>${unpacked-schemas.directory}/Schema Set</schema-set.directory>
+	</properties>
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<plugins>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>download-schemas</id>
+						<phase>generate-sources</phase>
+						<configuration>
+							<tasks>
+								<mkdir dir="${downloaded-schemas.directory}"/>
+								<get src="${schemas.src}" dest="${downloaded-schemas.directory}/${schemas.zip}" usetimestamp="true"/>
+								<mkdir dir="${unpacked-schemas.directory}"/>
+								<unzip src="${downloaded-schemas.directory}/${schemas.zip}" dest="${unpacked-schemas.directory}"/>
+								<mkdir dir="${schemas.directory}"/>
+								<move todir="${schemas.directory}">
+									<fileset dir="${schema-set.directory}">
+										<include name="**/*.*"/>
+									</fileset>
+								</move>
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.jvnet.jaxb2.maven2</groupId>
+				<artifactId>maven-jaxb2-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>generate</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<schemaIncludes>
+								<include>TCIP_4_0_0_Final.xsd</include>
+							</schemaIncludes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
