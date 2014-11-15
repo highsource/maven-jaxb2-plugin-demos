@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bindings
+	version="2.1"
+	xmlns="http://java.sun.com/xml/ns/jaxb"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<bindings schemaLocation="LRMS_Final_09_07_for_im.xsd" node="/xs:schema">
+		<bindings node="xs:complexType[@name='Chain']/xs:sequence/xs:element[@name='chain']/xs:complexType">
+			<class name="ChainIdNameType"/>
+		</bindings>
+	</bindings>
+	<bindings schemaLocation="LRMS_Final_09_07_for_atis.xsd" node="/xs:schema">
+		<bindings node="xs:complexType[@name='Chain']/xs:sequence/xs:element[@name='chain']/xs:complexType">
+			<class name="ChainIdNameType"/>
+		</bindings>
+	</bindings>
+	<bindings schemaLocation="lrms_Final_09_07.xsd" node="/xs:schema">
+		<bindings node="xs:complexType[@name='Chain']/xs:sequence/xs:element[@name='chain']/xs:complexType">
+			<class name="ChainIdNameType"/>
+		</bindings>
+	</bindings>
+</bindings>

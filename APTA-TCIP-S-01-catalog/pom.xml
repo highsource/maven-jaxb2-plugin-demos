@@ -1,9 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>APTA-TCIP-S-01</artifactId>
+	<artifactId>APTA-TCIP-S-01-catalog</artifactId>
 	<packaging>jar</packaging>
-	<name>APTA-TCIP-S-01 Demo</name>
+	<name>APTA-TCIP-S-01 Catalog Demo</name>
 	<parent>
 		<groupId>org.hisrc.maven.plugins</groupId>
 		<artifactId>maven-jaxb2-plugin-demos</artifactId>
@@ -57,9 +57,13 @@
 							<goal>generate</goal>
 						</goals>
 						<configuration>
-							<schemaIncludes>
-								<include>TCIP_4_0_0_Final.xsd</include>
-							</schemaIncludes>
+							<schemaIncludes/>
+							<catalog>src/main/resources/catalog.cat</catalog>
+							<schemas>
+								<schema>
+									<url>http://www.aptatcip.com/APTA-TCIP-S-01%204.0_files/Schema%20Set.zip!/Schema%20Set/TCIP_4_0_0_Final.xsd</url>
+								</schema>
+							</schemas>
 						</configuration>
 					</execution>
 				</executions>
